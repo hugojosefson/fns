@@ -2,15 +2,6 @@ import { Not } from "./boolean/not.ts";
 import { TypeGuard } from "./type-guard.ts";
 
 /**
- * The identity function. This function takes in a value and returns it.
- * @param x the value to return
- * @returns the input value
- */
-export function identity<T>(x: T): T {
-  return x;
-}
-
-/**
  * A no-args function that returns something of type T.
  */
 export type Getter<T> = () => T;
