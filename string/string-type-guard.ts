@@ -1,6 +1,6 @@
 import { TypeGuard } from "../type-guard.ts";
 import { isString } from "./is-string.ts";
-import { only, sequence, startWith } from "./regex.ts";
+import { endWith, only, sequence, startWith } from "./regex.ts";
 
 /**
  * A string that starts with a specific string.
@@ -45,9 +45,9 @@ export type StringTypeGuard<T extends string> = TypeGuard<T> & {
 };
 
 /**
- * Creates a type guard for strings, to match strings that contain nothing but the given pattern or string.
- * @param value The pattern or string to match.
- * @returns A type guard for strings, to match strings that contain nothing but the given pattern or string.
+ * Creates a type guard for strings, to match strings that contain nothing but the given pattern or string, exactly once.
+ * @param expected The pattern or string that the strings should match exactly.
+ * @returns A type guard for strings, to match strings that contain nothing but the given pattern or string, exactly once.
  * @example
  * ```ts
  * const isOnlyHello = isOnly(/Hello/i);
@@ -57,31 +57,88 @@ export type StringTypeGuard<T extends string> = TypeGuard<T> & {
  * ```
  */
 export const isOnly: <T extends string>(
-  value: RegExp | T,
+  expected: RegExp | T,
 ) => StringTypeGuard<T> = <
   T extends string,
->(value: RegExp | T): StringTypeGuard<T> => {
-  return matches(only(sequence(value))) as StringTypeGuard<T>;
+>(expected: RegExp | T): StringTypeGuard<T> => {
+  return matches(only(sequence(expected))) as StringTypeGuard<T>;
 };
 
+/**
+ * Creates a type guard for strings, to match strings that contain the given pattern or string.
+ * @param infix The pattern or string that the strings should contain.
+ * @returns A type guard for strings, to match strings that contain the given pattern or string.
+ * @example
+ * ```ts
+ * const containsO = contains(/o/);
+ * console.log(containsO("Hello, world")); // true
+ * console.log(containsO("Hello"));        // true
+ * console.log(containsO("hellO"));        // false
+ * ```
+ */
 export const contains: <Infix extends string>(
-  prefix: RegExp | Infix,
+  infix: RegExp | Infix,
 ) => StringTypeGuard<`${string}${Infix}${string}`> = <
-  T extends string,
->(prefix: RegExp | T): StringTypeGuard<`${string}${T}${string}`> => {
-  return matches(sequence(prefix)) as StringTypeGuard<`${string}${T}${string}`>;
-};
-
-export const startsWith: <T extends string>(
-  prefix: RegExp | T,
-) => StringTypeGuard<`${T}${string}`> = <
-  T extends string,
->(prefix: RegExp | T): StringTypeGuard<`${T}${string}`> => {
-  return matches(startWith(sequence(prefix))) as StringTypeGuard<
-    `${T}${string}`
+  Infix extends string,
+>(infix: RegExp | Infix): StringTypeGuard<`${string}${Infix}${string}`> => {
+  return matches(sequence(infix)) as StringTypeGuard<
+    `${string}${Infix}${string}`
   >;
 };
 
+/**
+ * Creates a type guard for strings, to match strings that start with the given pattern or string.
+ * @param prefix The pattern or string that the strings should start with.
+ * @returns A type guard for strings, to match strings that start with the given pattern or string.
+ * @example
+ * ```ts
+ * const startsWithH = startsWith(/h/);
+ * console.log(startsWithO("hello"));        // true
+ * console.log(startsWithO("world, hello")); // false
+ * ```
+ */
+export const startsWith: <Prefix extends string>(
+  prefix: RegExp | Prefix,
+) => StringTypeGuard<`${Prefix}${string}`> = <
+  Prefix extends string,
+>(prefix: RegExp | Prefix): StringTypeGuard<`${Prefix}${string}`> => {
+  return matches(startWith(sequence(prefix))) as StringTypeGuard<
+    `${Prefix}${string}`
+  >;
+};
+
+/**
+ * Creates a type guard for strings, to match strings that end with the given pattern or string.
+ * @param suffix The pattern or string that the strings should end with.
+ * @returns A type guard for strings, to match strings that end with the given pattern or string.
+ * @example
+ * ```ts
+ * const endsWithO = endsWith(/o/);
+ * console.log(endsWithO("hello"));        // true
+ * console.log(endsWithO("hello, world")); // false
+ * ```
+ */
+export const endsWith: <Suffix extends string>(
+  suffix: RegExp | Suffix,
+) => StringTypeGuard<`${string}${Suffix}`> = <
+  Suffix extends string,
+>(suffix: RegExp | Suffix): StringTypeGuard<`${string}${Suffix}`> => {
+  return matches(endWith(sequence(suffix))) as StringTypeGuard<
+    `${string}${Suffix}`
+  >;
+};
+
+/**
+ * Creates a type guard for strings, to match a specific {@link RegExp} pattern.
+ * @param regex The pattern that the strings should match.
+ * @returns A type guard for strings, to match a specific {@link RegExp} pattern.
+ * @example
+ * ```ts
+ * const hasHello = matches(/hello/i);
+ * console.log(hasHello("Hello, world")); // true
+ * console.log(hasHello("Hell, no"));     // false
+ * ```
+ */
 export function matches<T extends string>(
   regex: RegExp | T,
 ): StringTypeGuard<T> {

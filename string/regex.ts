@@ -14,44 +14,44 @@ export type RegexSequence<A extends RegExp, B extends RegExp> =
 
 /**
  * Prefixes a regex with `^`, so that it only matches the start of a string.
- * @param regex the regex to prefix
+ * @param prefix the regex to prefix
  * @example
  * ```ts
  * const regex = startWith(/a/);
  * // regex is /^a/
  * ```
  */
-export const startWith: <R extends RegExp>(
-  regex: R,
-) => RegexSequence<RegExp & { source: "^" }, R> = <R extends RegExp>(
-  regex: R,
-): RegexSequence<RegExp & { source: "^" }, R> =>
-  sequence(/^/, regex) as RegexSequence<RegExp & { source: "^" }, R>;
+export const startWith: <Prefix extends RegExp>(
+  prefix: Prefix,
+) => RegexSequence<RegExp & { source: "^" }, Prefix> = <Prefix extends RegExp>(
+  prefix: Prefix,
+): RegexSequence<RegExp & { source: "^" }, Prefix> =>
+  sequence(/^/, prefix) as RegexSequence<RegExp & { source: "^" }, Prefix>;
 
 /**
  * Suffices a regex with `$`, so that it only matches the end of a string.
- * @param regex the regex to suffix
+ * @param suffix the regex to suffix
  * @example
  * ```ts
  * const regex = endWith(/a/);
  * // regex is /a$/
  * ```
  */
-export const endWith: <R extends RegExp>(
-  regex: R,
-) => RegexSequence<R, RegExp & { source: "$" }> = <R extends RegExp>(
-  regex: R,
-): RegexSequence<R, RegExp & { source: "$" }> =>
-  sequence(regex, /$/) as RegexSequence<R, RegExp & { source: "$" }>;
+export const endWith: <Suffix extends RegExp>(
+  suffix: Suffix,
+) => RegexSequence<Suffix, RegExp & { source: "$" }> = <Suffix extends RegExp>(
+  suffix: Suffix,
+): RegexSequence<Suffix, RegExp & { source: "$" }> =>
+  sequence(suffix, /$/) as RegexSequence<Suffix, RegExp & { source: "$" }>;
 
 /**
  * Surrounds a regex with `^` and `$`, so that it only matches the entire string.
  */
-export const only: <R extends RegExp>(
-  x: R,
-) => R & { source: `^${R["source"]}$` } = pipe(startWith, endWith) as <
-  R extends RegExp,
->(x: R) => R & { source: `^${R["source"]}$` };
+export const only: <Only extends RegExp>(
+  x: Only,
+) => Only & { source: `^${Only["source"]}$` } = pipe(startWith, endWith) as <
+  Only extends RegExp,
+>(x: Only) => Only & { source: `^${Only["source"]}$` };
 
 export type RegexOr<A extends RegExp, B extends RegExp> =
   & A
@@ -123,8 +123,8 @@ export function optional<
 }
 
 /**
- * Adds parentheses around a regex if it doesn't already have them.
- * @param regex the regex to parenthesize
+ * Adds parentheses around a regex source string, if it doesn't already have them.
+ * @param regex the regex source string to parenthesize
  */
 export function parenthesize<R extends string>(
   regex: R,
@@ -135,6 +135,9 @@ export function parenthesize<R extends string>(
   return `(${regex})` as StringParenthesized<R>;
 }
 
+/**
+ * A regex with the global flag set.
+ */
 export type RegexGlobal<A extends RegExp> =
   & RegExp
   & { source: `${A["source"]}` }
@@ -152,6 +155,52 @@ export type RegexGlobal<A extends RegExp> =
  */
 export function global<R extends RegExp>(regex: R): RegexGlobal<R> {
   return new RegExp(regex.source, `${regex.flags}g`) as RegexGlobal<R>;
+}
+
+/**
+ * A regex with the case-insensitive flag set.
+ */
+export type RegexCaseInsensitive<A extends RegExp> =
+  & RegExp
+  & { source: `${A["source"]}` }
+  & { flags: `${A["flags"]}i` };
+
+/**
+ * Returns a regex with the case-insensitive flag set.
+ * @param regex the regex to make case-insensitive
+ * @returns a regex with the case-insensitive flag set
+ * @example
+ * ```ts
+ * const regex = caseInsensitive(/a/);
+ * // regex is /a/i
+ * ```
+ */
+export function caseInsensitive<R extends RegExp>(
+  regex: R,
+): RegexCaseInsensitive<R> {
+  return new RegExp(regex.source, `${regex.flags}i`) as RegexCaseInsensitive<R>;
+}
+
+/**
+ * A regex with the unicode flag set.
+ */
+export type RegexUnicode<A extends RegExp> =
+  & RegExp
+  & { source: `${A["source"]}` }
+  & { flags: `${A["flags"]}u` };
+
+/**
+ * Returns a regex with the unicode flag set.
+ * @param regex the regex to make unicode
+ * @returns a regex with the unicode flag set
+ * @example
+ * ```ts
+ * const regex = unicode(/a/);
+ * // regex is /a/u
+ * ```
+ */
+export function unicode<R extends RegExp>(regex: R): RegexUnicode<R> {
+  return new RegExp(regex.source, `${regex.flags}u`) as RegexUnicode<R>;
 }
 
 /**
