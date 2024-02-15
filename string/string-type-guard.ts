@@ -56,12 +56,12 @@ export type StringTypeGuard<T extends string> = TypeGuard<T> & {
  * console.log(isOnlyHello("hellO"));        // true
  * ```
  */
-export const isOnly: <T extends string>(
-  expected: RegExp | T,
-) => StringTypeGuard<T> = <
-  T extends string,
->(expected: RegExp | T): StringTypeGuard<T> => {
-  return matches(only(sequence(expected))) as StringTypeGuard<T>;
+export const isOnly: <Only extends string>(
+  expected: RegExp | Only,
+) => StringTypeGuard<Only> = <
+  Only extends string,
+>(expected: RegExp | Only): StringTypeGuard<Only> => {
+  return matches(only(sequence(expected))) as StringTypeGuard<Only>;
 };
 
 /**
@@ -78,12 +78,10 @@ export const isOnly: <T extends string>(
  */
 export const contains: <Infix extends string>(
   infix: RegExp | Infix,
-) => StringTypeGuard<`${string}${Infix}${string}`> = <
+) => StringTypeGuard<StringContaining<Infix>> = <
   Infix extends string,
->(infix: RegExp | Infix): StringTypeGuard<`${string}${Infix}${string}`> => {
-  return matches(sequence(infix)) as StringTypeGuard<
-    `${string}${Infix}${string}`
-  >;
+>(infix: RegExp | Infix): StringTypeGuard<StringContaining<Infix>> => {
+  return matches(sequence(infix)) as StringTypeGuard<StringContaining<Infix>>;
 };
 
 /**
@@ -99,11 +97,11 @@ export const contains: <Infix extends string>(
  */
 export const startsWith: <Prefix extends string>(
   prefix: RegExp | Prefix,
-) => StringTypeGuard<`${Prefix}${string}`> = <
+) => StringTypeGuard<StringStartingWith<Prefix>> = <
   Prefix extends string,
->(prefix: RegExp | Prefix): StringTypeGuard<`${Prefix}${string}`> => {
+>(prefix: RegExp | Prefix): StringTypeGuard<StringStartingWith<Prefix>> => {
   return matches(startWith(sequence(prefix))) as StringTypeGuard<
-    `${Prefix}${string}`
+    StringStartingWith<Prefix>
   >;
 };
 
@@ -120,11 +118,11 @@ export const startsWith: <Prefix extends string>(
  */
 export const endsWith: <Suffix extends string>(
   suffix: RegExp | Suffix,
-) => StringTypeGuard<`${string}${Suffix}`> = <
+) => StringTypeGuard<StringEndingWith<Suffix>> = <
   Suffix extends string,
->(suffix: RegExp | Suffix): StringTypeGuard<`${string}${Suffix}`> => {
+>(suffix: RegExp | Suffix): StringTypeGuard<StringEndingWith<Suffix>> => {
   return matches(endWith(sequence(suffix))) as StringTypeGuard<
-    `${string}${Suffix}`
+    StringEndingWith<Suffix>
   >;
 };
 
