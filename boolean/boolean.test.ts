@@ -1,6 +1,6 @@
 import { describe, it } from "https://deno.land/std@0.216.0/testing/bdd.ts";
 import { assert } from "https://deno.land/std@0.216.0/assert/assert.ts";
-import { isBoolean } from "./boolean.ts";
+import { isBoolean } from "./is-boolean.ts";
 describe("boolean", () => {
   describe("isBoolean", () => {
     it("should return true for booleans", () => {
