@@ -1,4 +1,4 @@
-import { TypeGuard } from "../type-guard.ts";
+import { TypeGuard } from "../type-guard/type-guard.ts";
 import { Predicate } from "./predicate.ts";
 
 /**

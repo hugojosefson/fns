@@ -1,12 +1,26 @@
-import { isFunction } from "./fn/is-function.ts";
-import { isString } from "./string/is-string.ts";
-import { isOnly } from "./string/string-type-guard.ts";
-import { TypeGuard } from "./type-guard.ts";
+import { isFunction } from "../fn/is-function.ts";
+import { isString } from "../string/is-string.ts";
+import { isOnly } from "../string/string-type-guard.ts";
+import { TypeGuard } from "../type-guard/type-guard.ts";
+import { isNonNullObject } from "./is-non-null-object.ts";
 
-export function isNonNullObject(
-  value: unknown,
-): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
+/**
+ * A type guard for objects, to match a specific property type.
+ */
+export type TypeGuardForObjectWithPropertyOfType<K extends string, V> =
+  TypeGuard<Record<K, V>>;
+
+/**
+ * Creates a type guard for {@link Record}.
+ * @param key Name of the property.
+ * @param valueTypeGuard Type guard for the property value.
+ * @returns A type guard for {@link Record}.
+ */
+export function createIsRecordWithProperty<K extends string, V>(
+  key: K,
+  valueTypeGuard: TypeGuard<V> | V,
+): TypeGuardForObjectWithPropertyOfType<K, V> {
+  return createIsRecord(key, valueTypeGuard);
 }
 
 export function createIsRecord<K extends string, V>(
@@ -41,24 +55,3 @@ export function createIsRecord<K extends string, V>(
     return valuesToMatch.every(effectiveValueTypeGuard);
   };
 }
-
-/**
- * Creates a type guard for {@link Record}.
- * @param key Name of the property.
- * @param valueTypeGuard Type guard for the property value.
- * @returns A type guard for {@link Record}.
- */
-export function createIsRecordWithProperty<K extends string, V>(
-  key: K,
-  valueTypeGuard: TypeGuard<V> | V,
-): TypeGuardForObjectWithPropertyOfType<K, V> {
-  return createIsRecord(
-    key,
-    valueTypeGuard,
-  );
-}
-
-export type TypeGuardForObjectWithPropertyOfType<K extends string, V> =
-  TypeGuard<
-    Record<K, V>
-  >;
