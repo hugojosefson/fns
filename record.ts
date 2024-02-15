@@ -1,4 +1,4 @@
-import { isFunction } from "./fn.ts";
+import { isFunction } from "./fn/is-function.ts";
 import { isString } from "./string/is-string.ts";
 import { isOnly } from "./string/string-type-guard.ts";
 import { TypeGuard } from "./type-guard.ts";

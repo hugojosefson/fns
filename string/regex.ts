@@ -1,5 +1,6 @@
 import merge from "npm:regex-merge";
-import { pipe } from "../fn.ts";
+
+import { pipe } from "../fn/pipe.ts";
 import { isString } from "./is-string.ts";
 import { StringParenthesized } from "./string-type-guard.ts";
 
