@@ -1,6 +1,6 @@
 import { isFunction } from "./fn.ts";
-import { isString } from "./strings/is-string.ts";
-import { isOnly } from "./strings/text-type-guard.ts";
+import { isString } from "./string/is-string.ts";
+import { isOnly } from "./string/string-type-guard.ts";
 import { TypeGuard } from "./type-guard.ts";
 
 export function isNonNullObject(

@@ -1,8 +1,11 @@
 import merge from "npm:regex-merge";
 import { pipe } from "../fn.ts";
 import { isString } from "./is-string.ts";
-import { StringParenthesized } from "./string-types.ts";
+import { StringParenthesized } from "./string-type-guard.ts";
 
+/**
+ * A regex, that is a sequence of two other regexes.
+ */
 export type RegexSequence<A extends RegExp, B extends RegExp> =
   & A
   & B
