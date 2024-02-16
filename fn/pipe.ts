@@ -1,25 +1,26 @@
 import { identity } from "./identity.ts";
 import { AsyncTransformer, Transformer } from "./transformer.ts";
 
-export function pipe<A, B>(
+export function pipe<A>(): Transformer<A, A>;
+export function pipe<A, B = A>(
   fnA: Transformer<A, B>,
 ): Transformer<A, B>;
-export function pipe<A, B, C>(
+export function pipe<A, B = A, C = B>(
   fnA: Transformer<A, B>,
   fnB: Transformer<B, C>,
 ): Transformer<A, C>;
-export function pipe<A, B, C, D>(
+export function pipe<A, B = A, C = B, D = C>(
   fnA: Transformer<A, B>,
   fnB: Transformer<B, C>,
   fnC: Transformer<C, D>,
 ): Transformer<A, D>;
-export function pipe<A, B, C, D, E>(
+export function pipe<A, B = A, C = B, D = C, E = D>(
   fnA: Transformer<A, B>,
   fnB: Transformer<B, C>,
   fnC: Transformer<C, D>,
   fnD: Transformer<D, E>,
 ): Transformer<A, E>;
-export function pipe<A, B, C, D, E, F>(
+export function pipe<A, B = A, C = B, D = C, E = D, F = E>(
   fnA: Transformer<A, B>,
   fnB: Transformer<B, C>,
   fnC: Transformer<C, D>,
@@ -36,25 +37,26 @@ export function pipe<T>(...fns: Transformer<T, T>[]): Transformer<T, T> {
   return (x) => fns.reduce((acc, fn) => fn(acc), x);
 }
 
-export function pipeAsync<A, B>(
+export function pipeAsync<A>(): AsyncTransformer<A, A>;
+export function pipeAsync<A, B = A>(
   fnA: AsyncTransformer<A, B>,
 ): AsyncTransformer<A, B>;
-export function pipeAsync<A, B, C>(
+export function pipeAsync<A, B = A, C = B>(
   fnA: AsyncTransformer<A, B>,
   fnB: AsyncTransformer<B, C>,
 ): AsyncTransformer<A, C>;
-export function pipeAsync<A, B, C, D>(
+export function pipeAsync<A, B = A, C = B, D = C>(
   fnA: AsyncTransformer<A, B>,
   fnB: AsyncTransformer<B, C>,
   fnC: AsyncTransformer<C, D>,
 ): AsyncTransformer<A, D>;
-export function pipeAsync<A, B, C, D, E>(
+export function pipeAsync<A, B = A, C = B, D = C, E = D>(
   fnA: AsyncTransformer<A, B>,
   fnB: AsyncTransformer<B, C>,
   fnC: AsyncTransformer<C, D>,
   fnD: AsyncTransformer<D, E>,
 ): AsyncTransformer<A, E>;
-export function pipeAsync<A, B, C, D, E, F>(
+export function pipeAsync<A, B = A, C = B, D = C, E = D, F = E>(
   fnA: AsyncTransformer<A, B>,
   fnB: AsyncTransformer<B, C>,
   fnC: AsyncTransformer<C, D>,
@@ -71,7 +73,6 @@ export function pipeAsync<T>(
   ...fns: AsyncTransformer<T, T>[]
 ): AsyncTransformer<T, T> {
   return fns
-    .reverse()
     .reduce(
       (acc, fn) => async (x) => await fn(await acc(x)),
       identity,
