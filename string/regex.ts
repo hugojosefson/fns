@@ -1,4 +1,4 @@
-import merge from "npm:regex-merge";
+import merge from "npm:regex-merge@2.0.0";
 
 import { pipe } from "../fn/pipe.ts";
 import { isString } from "./is-string.ts";
