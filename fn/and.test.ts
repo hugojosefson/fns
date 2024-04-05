@@ -12,6 +12,7 @@ describe("and", () => {
     assertEquals(isEvenAndPositive(-4), false);
     assertEquals(isEvenAndPositive(5), false);
   });
+
   it("should not return true if one of the predicates returns false", () => {
     const isEven = (n: number) => n % 2 === 0;
     const isNegative = (n: number) => n < 0;

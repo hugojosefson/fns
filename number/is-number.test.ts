@@ -8,6 +8,7 @@ describe("number", () => {
       assert(isNumber(0));
       assert(isNumber(123));
     });
+
     it("should return false for non-numbers", () => {
       assert(!isNumber("hello"));
       assert(!isNumber(true));
