@@ -1,6 +1,6 @@
-import { describe, it } from "https://deno.land/std@0.218.2/testing/bdd.ts";
-import { assert } from "https://deno.land/std@0.218.2/assert/assert.ts";
-import { assertEquals } from "https://deno.land/std@0.218.2/assert/assert_equals.ts";
+import { describe, it } from "https://deno.land/std@0.221.0/testing/bdd.ts";
+import { assert } from "https://deno.land/std@0.221.0/assert/assert.ts";
+import { assertEquals } from "https://deno.land/std@0.221.0/assert/assert_equals.ts";
 import { isArrayOf } from "./is-array-of.ts";
 import { isBoolean } from "../boolean/is-boolean.ts";
 
