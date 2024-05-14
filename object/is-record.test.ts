@@ -1,5 +1,5 @@
-import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
-import { assertEquals } from "https://deno.land/std@0.224.0/assert/assert_equals.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assertEquals } from "@std/assert/assert-equals";
 import { isNumber } from "../number/is-number.ts";
 import { createIsRecord, createIsRecordWithProperty } from "./is-record.ts";
 

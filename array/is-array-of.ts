@@ -1,4 +1,4 @@
-import { TypeGuard } from "../type-guard/type-guard.ts";
+import type { TypeGuard } from "../type-guard/type-guard.ts";
 
 /**
  * A type guard for arrays, to match a specific item type.

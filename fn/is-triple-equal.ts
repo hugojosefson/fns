@@ -1,5 +1,5 @@
-import { TypeGuard } from "../type-guard/type-guard.ts";
-import { Predicate } from "./predicate.ts";
+import type { TypeGuard } from "../type-guard/type-guard.ts";
+import type { Predicate } from "./predicate.ts";
 
 /**
  * A predicate and type guard for a specific value.

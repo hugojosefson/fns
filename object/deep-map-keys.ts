@@ -1,4 +1,4 @@
-import { Transformer } from "../fn/transformer.ts";
+import type { Transformer } from "../fn/transformer.ts";
 
 /**
  * Creates a new function that maps the keys of an object or array, recursively, using the provided function.
@@ -7,7 +7,7 @@ import { Transformer } from "../fn/transformer.ts";
  */
 export function createDeepMapKeys(
   fn: Transformer<string, PropertyKey>,
-) {
+): <U extends unknown, T extends unknown = unknown>(x: T) => U {
   /**
    * Recursively maps the keys of an object or array.
    * @param x the object or array to map
@@ -15,7 +15,10 @@ export function createDeepMapKeys(
    * @template U the return type
    * @template T the input type
    */
-  function deepMapKeys<U extends unknown, T extends unknown = unknown>(
+  function deepMapKeys<
+    U extends unknown,
+    T extends unknown = unknown,
+  >(
     x: T,
   ): U {
     if (Array.isArray(x)) {

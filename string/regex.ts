@@ -2,7 +2,7 @@ import merge from "npm:regex-merge@2.0.0";
 
 import { pipe } from "../fn/pipe.ts";
 import { isString } from "./is-string.ts";
-import { StringParenthesized } from "./string-type-guard.ts";
+import type { StringParenthesized } from "./string-type-guard.ts";
 
 /**
  * A regex, that is a sequence of two other regexes.

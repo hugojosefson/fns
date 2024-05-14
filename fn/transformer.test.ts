@@ -1,6 +1,6 @@
-import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
-import { assertEquals } from "https://deno.land/std@0.224.0/assert/assert_equals.ts";
-import { AsyncTransformer, Lookuper, Transformer } from "./transformer.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assertEquals } from "@std/assert/assert-equals";
+import type { AsyncTransformer, Lookuper, Transformer } from "./transformer.ts";
 
 describe("Transformer", () => {
   it("should transform the input value to the output value", () => {

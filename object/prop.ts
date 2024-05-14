@@ -1,4 +1,4 @@
-import { Lookuper } from "../fn/transformer.ts";
+import type { Lookuper } from "../fn/transformer.ts";
 
 /**
  * Creates a function that returns the value of the given key of the given object.

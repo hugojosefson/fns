@@ -1,5 +1,5 @@
-import { Predicate } from "./predicate.ts";
-import { Transformer } from "./transformer.ts";
+import type { Predicate } from "./predicate.ts";
+import type { Transformer } from "./transformer.ts";
 
 /**
  * Converts a function's return value to a boolean. This function takes in a function that returns a value,

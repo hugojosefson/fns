@@ -2,7 +2,7 @@ import { isFunction } from "../fn/is-function.ts";
 import { isTripleEqual } from "../fn/is-triple-equal.ts";
 import { isString } from "../string/is-string.ts";
 import { isOnly } from "../string/string-type-guard.ts";
-import { TypeGuard } from "../type-guard/type-guard.ts";
+import type { TypeGuard } from "../type-guard/type-guard.ts";
 import { isNonNullObject } from "./is-non-null-object.ts";
 
 /**

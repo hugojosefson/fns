@@ -1,5 +1,5 @@
-import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
-import { Getter } from "./getter.ts";
+import { describe, it } from "@std/testing/bdd";
+import type { Getter } from "./getter.ts";
 
 describe("Getter", () => {
   it("const a: Getter<number> = () => 5; should compile", () => {

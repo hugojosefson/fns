@@ -1,4 +1,4 @@
-import { TypeGuard } from "./type-guard.ts";
+import type { TypeGuard } from "./type-guard.ts";
 
 /**
  * A type that is either `T` or `undefined`.

@@ -1,4 +1,4 @@
-import { Getter } from "./getter.ts";
+import type { Getter } from "./getter.ts";
 
 /**
  * Creates a function that always returns the same value.

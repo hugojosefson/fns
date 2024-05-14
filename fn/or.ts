@@ -1,4 +1,4 @@
-import { AsyncPredicate, Predicate } from "./predicate.ts";
+import type { AsyncPredicate, Predicate } from "./predicate.ts";
 
 /**
  * Returns true if any given function returns true. This function takes in a variable number of functions,

@@ -1,4 +1,45 @@
 {
+  "name": "@hugojosefson/fns",
+  "version": "1.2.0",
+  "exports": {
+    "./object/is-record": "./object/is-record.ts",
+    "./object/is-non-null-object": "./object/is-non-null-object.ts",
+    "./object/prop": "./object/prop.ts",
+    "./object/deep-map-keys": "./object/deep-map-keys.ts",
+    "./fn/transformer": "./fn/transformer.ts",
+    "./fn/predicate": "./fn/predicate.ts",
+    "./fn/swallow": "./fn/swallow.ts",
+    "./fn/getter": "./fn/getter.ts",
+    "./fn/is-triple-equal": "./fn/is-triple-equal.ts",
+    "./fn/stringify": "./fn/stringify.ts",
+    "./fn/not": "./fn/not.ts",
+    "./fn/identity": "./fn/identity.ts",
+    "./fn/pipe": "./fn/pipe.ts",
+    "./fn/is-function": "./fn/is-function.ts",
+    "./fn/and": "./fn/and.ts",
+    "./fn/or": "./fn/or.ts",
+    "./fn/always": "./fn/always.ts",
+    "./fn/boolify": "./fn/boolify.ts",
+    "./string/is-string": "./string/is-string.ts",
+    "./string/string-type-guard": "./string/string-type-guard.ts",
+    "./string/regex": "./string/regex.ts",
+    "./string/s": "./string/s.ts",
+    "./string/ss": "./string/ss.ts",
+    "./string/sort-unique": "./string/sort-unique.ts",
+    "./string/undefined-if-empty-string": "./string/undefined-if-empty-string.ts",
+    "./array/is-array-of": "./array/is-array-of.ts",
+    "./array/intersperse": "./array/intersperse.ts",
+    "./array/reduce-to-largest-number": "./array/reduce-to-largest-number.ts",
+    "./array/from-async-iterator": "./array/from-async-iterator.ts",
+    "./array/from-iterator": "./array/from-iterator.ts",
+    "./iterable/into-iterable": "./iterable/into-iterable.ts",
+    "./iterable/into-async-iterable": "./iterable/into-async-iterable.ts",
+    "./number/is-number": "./number/is-number.ts",
+    "./boolean/not": "./boolean/not.ts",
+    "./boolean/is-boolean": "./boolean/is-boolean.ts",
+    "./type-guard/optional": "./type-guard/optional.ts",
+    "./type-guard/type-guard": "./type-guard/type-guard.ts"
+  },
   "tasks": {
     "all": "deno fmt && deno lint && deno task check && deno task test && deno task coverage",
     "check": "sh -c \"git ls-files -z | grep -zE '\\.(mj|j|t)sx?$' | xargs --null --max-args=1 -- deno check\"",
@@ -7,5 +48,12 @@
     "release": "deno task all && test -z \"$(git status --porcelain)\" && GITHUB_TOKEN=$(gh auth token) deno run --allow-env=GITHUB_TOKEN --allow-net=api.github.com --allow-run=bash https://deno.land/x/shipit@0.6.1/shipit.ts",
     "udd": "sh -c \"git ls-files -z | grep -zE '(\\.(mj|j|t)sx?|^deno.jsonc?)$' | xargs --null -- deno run --allow-read=. --allow-write=. --allow-net https://deno.land/x/udd@0.8.2/main.ts\""
   },
-  "lock": false
+  "lock": false,
+  "imports": {
+    "@std/testing": "jsr:@std/testing@0.224.0",
+    "@std/assert": "jsr:@std/assert@0.224.0"
+  },
+  "exclude": [
+    "cov_profile"
+  ]
 }

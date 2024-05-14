@@ -1,5 +1,5 @@
-import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
-import { assert } from "https://deno.land/std@0.224.0/assert/assert.ts";
+import { describe, it } from "@std/testing/bdd";
+import { assert } from "@std/assert/assert";
 import { isBoolean } from "./is-boolean.ts";
 
 describe("boolean", () => {

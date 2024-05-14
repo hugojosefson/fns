@@ -1,4 +1,4 @@
-import { AsyncTransformer, Transformer } from "./transformer.ts";
+import type { AsyncTransformer, Transformer } from "./transformer.ts";
 
 /**
  * A function that evaluates something about the input, and returns a boolean.

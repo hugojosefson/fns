@@ -1,4 +1,4 @@
-import { TypeGuard } from "../type-guard/type-guard.ts";
+import type { TypeGuard } from "../type-guard/type-guard.ts";
 import { isString } from "./is-string.ts";
 import { endWith, only, sequence, startWith } from "./regex.ts";
 

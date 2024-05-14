@@ -1,6 +1,6 @@
-import { assertEquals } from "https://deno.land/std@0.224.0/assert/assert_equals.ts";
-import { assert } from "https://deno.land/std@0.224.0/assert/assert.ts";
-import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
+import { assertEquals } from "@std/assert/assert-equals";
+import { assert } from "@std/assert/assert";
+import { describe, it } from "@std/testing/bdd";
 import { fromIterator } from "./from-iterator.ts";
 
 function* range(startAt: number, endBefore: number): IterableIterator<number> {

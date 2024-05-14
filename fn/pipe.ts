@@ -1,5 +1,5 @@
 import { identity } from "./identity.ts";
-import { AsyncTransformer, Transformer } from "./transformer.ts";
+import type { AsyncTransformer, Transformer } from "./transformer.ts";
 
 export function pipe<A>(): Transformer<A, A>;
 export function pipe<A, B = A>(

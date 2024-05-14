@@ -1,5 +1,5 @@
-import { Not } from "../boolean/not.ts";
-import { AsyncPredicate, Predicate } from "./predicate.ts";
+import type { Not } from "../boolean/not.ts";
+import type { AsyncPredicate, Predicate } from "./predicate.ts";
 
 /**
  * Negates a boolean function. This function takes in a function that returns a boolean,

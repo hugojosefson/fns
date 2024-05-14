@@ -1,5 +1,5 @@
-import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
-import { Not } from "./not.ts";
+import { describe, it } from "@std/testing/bdd";
+import type { Not } from "./not.ts";
 
 describe("Not", () => {
   it("const a: Not<true> = false; should compile", () => {
