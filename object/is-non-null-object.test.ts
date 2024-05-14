@@ -1,5 +1,5 @@
-import { describe, it } from "https://deno.land/std@0.221.0/testing/bdd.ts";
-import { assertEquals } from "https://deno.land/std@0.221.0/assert/assert_equals.ts";
+import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
+import { assertEquals } from "https://deno.land/std@0.224.0/assert/assert_equals.ts";
 import { isNonNullObject } from "./is-non-null-object.ts";
 
 describe("isNonNullObject", () => {

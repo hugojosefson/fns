@@ -1,4 +1,4 @@
-import { describe, it } from "https://deno.land/std@0.221.0/testing/bdd.ts";
+import { describe, it } from "https://deno.land/std@0.224.0/testing/bdd.ts";
 import { Not } from "./not.ts";
 
 describe("Not", () => {
