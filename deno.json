@@ -1,6 +1,7 @@
 {
   "name": "@hugojosefson/fns",
   "version": "2.0.1",
+  "description": "Utility functions",
   "exports": {
     "./object/is-record": "./object/is-record.ts",
     "./object/is-non-null-object": "./object/is-non-null-object.ts",
