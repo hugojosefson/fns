@@ -18,4 +18,10 @@ describe("swallow", () => {
       assertEquals(error instanceof TypeError, true);
     }
   });
+
+  it("should call any Getter function if given as default value", async () => {
+    const errorFn = () => Promise.reject(new Error());
+    const swallowedFn = errorFn().catch(swallow(Error, () => "default"));
+    assertEquals(await swallowedFn, "default");
+  });
 });
