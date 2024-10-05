@@ -57,6 +57,7 @@
     "regex-merge": "npm:regex-merge@^2.0.0"
   },
   "exclude": [
-    "cov_profile"
+    "cov_profile",
+    "docs"
   ]
 }
