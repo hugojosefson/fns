@@ -1,4 +1,4 @@
-import { assertEquals } from "@std/assert/assert-equals";
+import { assertEquals } from "@std/assert/equals";
 import { assert } from "@std/assert/assert";
 import { describe, it } from "@std/testing/bdd";
 import { fromIterator } from "./from-iterator.ts";

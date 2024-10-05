@@ -1,6 +1,6 @@
 import { describe, it } from "@std/testing/bdd";
 import { assert } from "@std/assert/assert";
-import { assertEquals } from "@std/assert/assert-equals";
+import { assertEquals } from "@std/assert/equals";
 import { undefinedIfEmptyString } from "./undefined-if-empty-string.ts";
 
 describe("undefinedIfEmptyString", () => {

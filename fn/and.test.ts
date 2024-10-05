@@ -1,6 +1,6 @@
-import { assertNotEquals } from "@std/assert/assert-not-equals";
+import { assertNotEquals } from "@std/assert/not-equals";
 import { describe, it } from "@std/testing/bdd";
-import { assertEquals } from "@std/assert/assert-equals";
+import { assertEquals } from "@std/assert/equals";
 import { and, andAsync } from "./and.ts";
 
 describe("and", () => {
