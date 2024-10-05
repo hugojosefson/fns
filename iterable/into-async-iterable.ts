@@ -1,41 +1,29 @@
-import { isFunction } from "../fn/is-function.ts";
-import { createIsRecordWithProperty } from "../object/is-record.ts";
+import { isEventEmitterLike } from "./event-emitter-like.ts";
+import { intoAsyncIterableFromEventEmitterLike } from "./into-async-iterable-from-event-emitter-like.ts";
+import { intoAsyncIterableFromIterable } from "./into-async-iterable-from-iterable.ts";
+import { intoAsyncIterableFromIteratorOrAsyncIterator } from "./into-async-iterable-from-iterator-or-async-iterator.ts";
+import type { StreamLike } from "./stream-like.ts";
+import { isAsyncIterable } from "./is-async-iterable.ts";
+import { isIterable } from "./is-iterable.ts";
+import { isIteratorOrAsyncIterator } from "./is-iterator-or-async-iterator.ts";
 
 /**
- * Checks if the given object has a {@link Symbol.asyncIterator} property.
- * @param obj The object to check.
- * @returns `true` if the object has an {@link Symbol.asyncIterator} property, `false` otherwise.
+ * Converts any {@link StreamLike}, into an {@link AsyncIterable}.
+ * @param input the input to convert
+ * @returns an `AsyncIterable` of items from the input
  */
-const hasAsyncIteratorSymbol = createIsRecordWithProperty(
-  Symbol.asyncIterator,
-  isFunction,
-);
-const hasNextMethod = createIsRecordWithProperty(
-  "next",
-  isFunction,
-);
-
-/**
- * Converts an {@link AsyncIterator}, {@link AsyncIterableIterator}, or {@link AsyncIterable} to an {@link AsyncIterable}.
- * @param asyncIterator The async iterator to convert.
- * @returns The async iterable of items from the async iterator.
- */
-export function intoAsyncIterable<T>(
-  asyncIterator: AsyncIterator<T> | AsyncIterableIterator<T> | AsyncIterable<T>,
-): AsyncIterable<T> {
-  if (hasAsyncIteratorSymbol(asyncIterator)) {
-    return asyncIterator as AsyncIterable<T>;
+export function intoAsyncIterable<T>(input: StreamLike<T>): AsyncIterable<T> {
+  if (isAsyncIterable(input)) {
+    return input;
   }
-  if (hasNextMethod(asyncIterator)) {
-    return {
-      [Symbol.asyncIterator](): AsyncIterator<T> {
-        return {
-          next: () => asyncIterator.next(),
-        };
-      },
-    };
+  if (isIterable(input)) {
+    return intoAsyncIterableFromIterable(input);
   }
-  throw new Error(
-    `asyncIterator has neither a Symbol.asyncIterator method, nor a next method.`,
-  );
+  if (isIteratorOrAsyncIterator(input)) {
+    return intoAsyncIterableFromIteratorOrAsyncIterator(input);
+  }
+  if (isEventEmitterLike(input)) {
+    return intoAsyncIterableFromEventEmitterLike(input);
+  }
+  throw new Error(`Could not convert input, into an AsyncIterable: ${input}`);
 }

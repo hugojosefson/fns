@@ -35,6 +35,7 @@
     "./array/from-iterator": "./array/from-iterator.ts",
     "./iterable/into-iterable": "./iterable/into-iterable.ts",
     "./iterable/into-async-iterable": "./iterable/into-async-iterable.ts",
+    "./stream/into-readable-stream": "./stream/into-readable-stream.ts",
     "./number/is-number": "./number/is-number.ts",
     "./boolean/not": "./boolean/not.ts",
     "./boolean/is-boolean": "./boolean/is-boolean.ts",
