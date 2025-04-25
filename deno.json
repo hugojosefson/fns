@@ -43,12 +43,18 @@
     "./type-guard/type-guard": "./type-guard/type-guard.ts"
   },
   "tasks": {
-    "all": "deno fmt && deno lint && deno task check && deno task test && deno publish --dry-run --allow-dirty && deno task coverage",
-    "check": "sh -c \"git ls-files -z | grep -zE '\\.(mj|j|t)sx?$' | xargs --null --max-args=1 -- deno check\"",
-    "test": "deno test --coverage=cov_profile",
-    "coverage": "deno coverage --lcov --output=cov_profile/lcov.info cov_profile",
-    "release": "deno task all && test -z \"$(git status --porcelain)\" && GITHUB_TOKEN=$(gh auth token) deno run --allow-env=GITHUB_TOKEN --allow-net=api.github.com --allow-import --allow-run=bash https://deno.land/x/shipit@0.6.1/shipit.ts && deno publish",
-    "udd": "sh -c \"git ls-files -z | grep -zE '(\\.(mj|j|t)sx?|^deno.jsonc?)$' | xargs --null -- deno run --allow-read=. --allow-write=. --allow-net https://deno.land/x/udd@0.8.2/main.ts\""
+    "all": "                   deno fmt && deno lint --fix && (deno check . & deno publish --dry-run --allow-dirty & deno task test) && echo 'Available dependency bumps:' && deno task bump-deps:list",
+    "test": "                  rm -rf coverage && deno test --coverage && (deno coverage --lcov --output=coverage/lcov.info)",
+    "bump-deps:list": "        deno --allow-env --allow-read --allow-write='~/.local,.' --allow-run=git,deno --allow-net=jsr.io,registry.npmjs.org jsr:@molt/cli@0.19.8",
+    "bump-deps:write": "       deno task -q bump-deps:list --write",
+    "bump-deps:commit": "      deno task -q bump-deps:list --commit",
+    "git-is-clean": "          test -z \"$(git status --porcelain)\"",
+    "release": "               deno task ready-to-start && deno task release:commit && deno task release:tag && deno task release:push",
+    "release:ready-to-start": "deno task git-is-clean && deno task all && deno task git-is-clean && deno publish --dry-run",
+    "release:tag": "           git tag              $(deno task version)",
+    "release:push": "          git push origin main $(deno task version)",
+    "release:commit": "        deno --allow-all npm:fork-version@1.7.6 --changelog-all --tag-prefix='' --skip-tag && deno fmt CHANGELOG.md && git commit --amend --no-edit",
+    "version": "               deno --allow-all npm:fork-version@1.7.6 --inspect-version"
   },
   "lock": false,
   "imports": {
@@ -57,7 +63,7 @@
     "regex-merge": "npm:regex-merge@^2.0.0"
   },
   "exclude": [
-    "cov_profile",
+    "coverage",
     "docs"
   ]
 }
