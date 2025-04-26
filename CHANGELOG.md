@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
+## [2.1.2](https://github.com/hugojosefson/fns/compare/2.1.1...2.1.2) (2025-04-26)
+
+### Other Changes
+
+- format changelog during release
+  ([22f82ca](https://github.com/hugojosefson/fns/commit/22f82cae4ee8534dbafc40f34f88d93db0b385ec))
+
 ## [2.1.1](https://github.com/hugojosefson/fns/compare/2.1.0...2.1.1) (2025-04-26)
 
 ### Other Changes
