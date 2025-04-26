@@ -44,11 +44,11 @@
     "./type-guard/type-guard": "./type-guard/type-guard.ts"
   },
   "tasks": {
-    "all": "                   deno fmt && deno lint --fix && (deno check . & deno publish --dry-run --allow-dirty & deno task test) && echo 'Available dependency bumps:' && deno task bump-deps:list",
-    "test": "                  rm -rf coverage && deno test --coverage && (deno coverage --lcov --output=coverage/lcov.info)",
-    "bump-deps:list": "        deno --allow-env --allow-read --allow-write='~/.local,.' --allow-run=git,deno --allow-net=jsr.io,registry.npmjs.org jsr:@molt/cli@0.19.8",
+    "all": "                   deno fmt && deno lint --fix && (deno check & deno publish --dry-run --allow-dirty & deno task test) && echo 'Available dependency bumps:' && deno task bump-deps:list",
+    "test": "                  rm -rf coverage && deno test --parallel --coverage && deno coverage --lcov --output=coverage/lcov.info",
+    "bump-deps:list": "        deno --allow-env --allow-read --allow-write=$HOME/.local/share/deno-wasmbuild,. --allow-run=git,deno --allow-net=jsr.io,registry.npmjs.org jsr:@molt/cli@0.19.8",
     "bump-deps:write": "       deno task -q bump-deps:list --write",
-    "bump-deps:commit": "      deno task -q bump-deps:list --commit",
+    "bump-deps:commit": "      deno task -q bump-deps:list --commit --pre-commit=test --prefix=chore:",
     "git-is-clean": "          test -z \"$(git status --porcelain)\"",
     "release": "               deno task release:ready-to-start && deno task release:commit && deno task release:tag && deno task release:push",
     "release:ready-to-start": "deno task git-is-clean && deno task all && deno task git-is-clean && deno publish --dry-run",

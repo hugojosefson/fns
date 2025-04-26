@@ -4,10 +4,9 @@ on:
   schedule:
     - cron: "0 23 * * *"
   workflow_dispatch:
-
-permissions:
-  contents: write
-  pull-requests: write
+  push:
+    branches:
+      - "main"
 
 jobs:
   bump-deps:
@@ -15,3 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hasundue/molt-action@v1
+        with:
+          branch: "bump-deps"
+          token: "${{ secrets.BUMP_DEPS_TOKEN }}"
