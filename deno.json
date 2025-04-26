@@ -53,7 +53,7 @@
     "release:ready-to-start": "deno task git-is-clean && deno task all && deno task git-is-clean && deno publish --dry-run",
     "release:tag": "           git tag              $(deno task version)",
     "release:push": "          git push origin main $(deno task version)",
-    "release:commit": "        deno --allow-all npm:fork-version@1.7.6 --changelog-all --tag-prefix='' --skip-tag && deno fmt CHANGELOG.md && git commit --amend --no-edit",
+    "release:commit": "        deno --allow-all npm:fork-version@1.7.6 --changelog-all --tag-prefix='' --skip-tag && deno fmt CHANGELOG.md && git add CHANGELOG.md && git commit --amend --no-edit",
     "version": "               deno --allow-all npm:fork-version@1.7.6 --inspect-version"
   },
   "lock": false,

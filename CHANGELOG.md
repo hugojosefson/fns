@@ -1,17 +1,20 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
 ## [2.1.1](https://github.com/hugojosefson/fns/compare/2.1.0...2.1.1) (2025-04-26)
 
-
 ### Other Changes
 
-* add changelog, so far ([adfa7aa](https://github.com/hugojosefson/fns/commit/adfa7aaa4401999b5da92ed2ed3544d3fdbd8780))
-* build refresh ([775f62a](https://github.com/hugojosefson/fns/commit/775f62aebdb94207c5d287bad4e8951ddec82f2f))
-* fix release command ([02574c2](https://github.com/hugojosefson/fns/commit/02574c2863306691ec9369474b5409a9850186a8))
-* link each version number to diff ([661e381](https://github.com/hugojosefson/fns/commit/661e381b159256db2fe668d8b7cbdda12424bb95))
-
+- add changelog, so far
+  ([adfa7aa](https://github.com/hugojosefson/fns/commit/adfa7aaa4401999b5da92ed2ed3544d3fdbd8780))
+- build refresh
+  ([775f62a](https://github.com/hugojosefson/fns/commit/775f62aebdb94207c5d287bad4e8951ddec82f2f))
+- fix release command
+  ([02574c2](https://github.com/hugojosefson/fns/commit/02574c2863306691ec9369474b5409a9850186a8))
+- link each version number to diff
+  ([661e381](https://github.com/hugojosefson/fns/commit/661e381b159256db2fe668d8b7cbdda12424bb95))
 
 ## [2.1.0](https://github.com/hugojosefson/fns/compare/2.0.1...2.1.0) (2024-10-06)
 
