@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
+## 2.1.3 (2025-04-26)
+
+### Other Changes
+
+- add permissions for release
+  ([13cb011](https://github.com/hugojosefson/fns/commit/13cb011aed9af040bfdc995bcc8eaa7f6d11e353))
+
 ## [2.1.2](https://github.com/hugojosefson/fns/compare/2.1.1...2.1.2) (2025-04-26)
 
 ### Other Changes
