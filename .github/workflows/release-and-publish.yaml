@@ -1,20 +1,24 @@
-name: deno-ci
-
+name: release and publish
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
-      - run: deno task test
-  check:
+      - run: deno task release
+
+  publish:
+    needs: release
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
-      - run: deno fmt --check
-      - run: deno lint
-      - run: deno check .
+      - run: deno publish
