@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
+## 2.1.5 (2025-04-26)
+
+### Other Changes
+
+- trigger build
+  ([b50eff2](https://github.com/hugojosefson/fns/commit/b50eff2a7a7afdc054776c50204f4e3551ba0aa2))
+
 ## 2.1.4 (2025-04-26)
 
 ### Other Changes
