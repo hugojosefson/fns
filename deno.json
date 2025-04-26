@@ -49,7 +49,7 @@
     "bump-deps:write": "       deno task -q bump-deps:list --write",
     "bump-deps:commit": "      deno task -q bump-deps:list --commit",
     "git-is-clean": "          test -z \"$(git status --porcelain)\"",
-    "release": "               deno task ready-to-start && deno task release:commit && deno task release:tag && deno task release:push",
+    "release": "               deno task release:ready-to-start && deno task release:commit && deno task release:tag && deno task release:push",
     "release:ready-to-start": "deno task git-is-clean && deno task all && deno task git-is-clean && deno publish --dry-run",
     "release:tag": "           git tag              $(deno task version)",
     "release:push": "          git push origin main $(deno task version)",
