@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
+## 2.1.6 (2025-04-26)
+
+### Other Changes
+
+- publish current release
+  ([d109dfe](https://github.com/hugojosefson/fns/commit/d109dfe293f9bf1d3044184f2a1db1b678d5c2d8))
+
 ## 2.1.5 (2025-04-26)
 
 ### Other Changes
