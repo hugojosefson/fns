@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
-## 2.1.0 (2024-10-06)
+## [2.1.0](https://github.com/hugojosefson/fns/compare/2.0.1...2.1.0) (2024-10-06)
 
 ### Features
 
@@ -30,35 +30,35 @@ All notable changes to this project will be documented in this file. See
 - allow imports
   ([5e3b1ea](https://github.com/hugojosefson/fns/commit/5e3b1ea229811e1ab4ac3816cf440b2af395ea91))
 
-## 2.0.1 (2024-05-27)
+## [2.0.1](https://github.com/hugojosefson/fns/compare/2.0.0...2.0.1) (2024-05-27)
 
 ### Chore
 
 - bump version for jsr.io
   ([2157ec5](https://github.com/hugojosefson/fns/commit/2157ec53a71e67ff9e412db01b7f89bd5c42589d))
 
-## 2.0.0 (2024-05-27)
+## [2.0.0](https://github.com/hugojosefson/fns/compare/1.3.1...2.0.0) (2024-05-27)
 
 ### ⚠ BREAKING CHANGES
 
 - swallow should call any default Getter fn
   ([1175a37](https://github.com/hugojosefson/fns/commit/1175a372bd9ea4cc9d9f8dacac64969c137bc6f8))
 
-## 1.3.1 (2024-05-15)
+## [1.3.1](https://github.com/hugojosefson/fns/compare/1.3.0...1.3.1) (2024-05-15)
 
 ### Chore
 
 - bump version
   ([0355611](https://github.com/hugojosefson/fns/commit/03556112701c8866f60df9c7a88b1902e2021cac))
 
-## 1.3.0 (2024-05-14)
+## [1.3.0](https://github.com/hugojosefson/fns/compare/1.2.0...1.3.0) (2024-05-14)
 
 ### Chore
 
 - publish to jsr w/ deno task
   ([b38f7ad](https://github.com/hugojosefson/fns/commit/b38f7ade39a4a15b94aca43455a83fe618f24d1e))
 
-## 1.2.0 (2024-05-14)
+## [1.2.0](https://github.com/hugojosefson/fns/compare/1.1.1...1.2.0) (2024-05-14)
 
 ### Features
 
@@ -83,7 +83,7 @@ All notable changes to this project will be documented in this file. See
 - style: whitespace
   ([47555a0](https://github.com/hugojosefson/fns/commit/47555a03e85016a65297f27beccdbe2a84eb3532))
 
-## 1.1.1 (2024-04-05)
+## [1.1.1](https://github.com/hugojosefson/fns/compare/1.1.0...1.1.1) (2024-04-05)
 
 ### Chore
 
@@ -92,7 +92,7 @@ All notable changes to this project will be documented in this file. See
 - bump deps
   ([530fd65](https://github.com/hugojosefson/fns/commit/530fd65941fce86f5f18e715256109aa27c01abd))
 
-## 1.1.0 (2024-03-01)
+## [1.1.0](https://github.com/hugojosefson/fns/compare/1.0.0...1.1.0) (2024-03-01)
 
 ### Features
 
@@ -104,7 +104,7 @@ All notable changes to this project will be documented in this file. See
 - bump deps
   ([756527d](https://github.com/hugojosefson/fns/commit/756527dc1b1f2027f0604688e3b1e98f17664f68))
 
-## 1.0.0 (2024-02-20)
+## [1.0.0](https://github.com/hugojosefson/fns/compare/0d7b2ef48d56430498166a0073e5451129e3906a...1.0.0) (2024-02-20)
 
 ### Features
 
