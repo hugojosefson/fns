@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
+## 2.1.8 (2025-05-02)
+
+### Other Changes
+
+- update webstorm project config
+  ([bc35fce](https://github.com/hugojosefson/fns/commit/bc35fce19d49c67b23a1c35bcf5de7c3cc0199b5))
+
 ## 2.1.7 (2025-04-26)
 
 ## 2.1.6 (2025-04-26)
