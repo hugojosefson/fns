@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [fork-version](https://github.com/eglavin/fork-version) for commit guidelines.
 
+## 2.1.9 (2025-11-18)
+
+### Other Changes
+
+- deno fmt
+  ([1aac3c9](https://github.com/hugojosefson/fns/commit/1aac3c99dfc5e0a8041496ef8481ef1ef411a952))
+
 ## 2.1.8 (2025-05-02)
 
 ### Other Changes
